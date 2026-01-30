@@ -1,13 +1,14 @@
 "use client"
 
-import React from "react"
-
-import { useState } from "react"
+import { makeRequest } from "@/api-conf"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useMutation } from "@tanstack/react-query"
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { PricingResult } from "./result-card"
 
 export interface PricingInputs {
   unitCost: number
@@ -17,18 +18,20 @@ export interface PricingInputs {
 }
 
 interface PricingFormProps {
-  onSubmit: (inputs: PricingInputs) => void
-  isLoading: boolean
+   isLoading: boolean
+  setIsPending: Dispatch<SetStateAction<boolean>>
+  setResult: Dispatch<SetStateAction<PricingResult | null>>
 }
 
-export function PricingForm({ onSubmit, isLoading }: PricingFormProps) {
+export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormProps) {
   const [unitCost, setUnitCost] = useState("")
   const [desiredMargin, setDesiredMargin] = useState([30])
   const [competitorMinPrice, setCompetitorMinPrice] = useState("")
   const [competitorMaxPrice, setCompetitorMaxPrice] = useState("")
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [formData,setFormData] = useState<PricingInputs | null>(null)
 
-  const validate = () => {
+    const validate = () => {
     const newErrors: Record<string, string> = {}
 
     if (!unitCost || Number(unitCost) <= 0) {
@@ -52,15 +55,36 @@ export function PricingForm({ onSubmit, isLoading }: PricingFormProps) {
     return Object.keys(newErrors).length === 0
   }
 
+  const { mutate, isPending, error ,data} = useMutation({
+    mutationFn: makeRequest.bind(null, formData),
+    // onSuccess: () => {
+    //   queryClient.invalidateQueries({ queryKey: [POSTS_CACHE_KEY] });
+    // },
+  });
+  useEffect(()=>{
+    setIsPending(isPending)
+  },[isPending])
+
+  useEffect(()=>{
+    if (data) {
+      setResult(data)
+    }
+  },[data])
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (validate()) {
-      onSubmit({
-        unitCost: Number(unitCost),
+
+    let input = {
+       unitCost: Number(unitCost),
         desiredMargin: desiredMargin[0],
         competitorMinPrice: Number(competitorMinPrice),
-        competitorMaxPrice: Number(competitorMaxPrice),
-      })
+        competitorMaxPrice: Number(competitorMaxPrice)
+    }
+    if (validate()) {
+      setResult(null)
+      setFormData(input)
+      let v =  mutate();
+    
     }
   }
 
