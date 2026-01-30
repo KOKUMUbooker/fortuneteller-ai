@@ -16,11 +16,11 @@ func CalculateBasePrice(unitCost, desiredMargin float64) float64 {
 
 func CalculateSuggestedRange(basePrice, competitorMin, competitorMax float64) (min float64, max float64, err error) {
 	if min > max {
-		return -1, -1, errors.New("Invalid minimum value : min > max")
+		return -1, -1, errors.New("invalid minimum value : min > max")
 	}
 
 	if competitorMin > competitorMax {
-		return -1, -1, errors.New("Invalid competitormin value : competitormin > competitormax")
+		return -1, -1, errors.New("invalid competitormin value : competitormin > competitormax")
 	}
 
 	min = math.Max(basePrice, competitorMin)
