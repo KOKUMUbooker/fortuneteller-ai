@@ -1,11 +1,17 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/KOKUMUbooker/fortuneteller-ai/Backend/internal/config"
 	"github.com/KOKUMUbooker/fortuneteller-ai/Backend/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	cfg := config.Load()
+	fmt.Println("cfg : ", cfg)
+
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 
