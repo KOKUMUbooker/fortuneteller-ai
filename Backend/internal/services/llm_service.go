@@ -3,8 +3,10 @@ package services
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type ORClient struct {
@@ -22,15 +24,16 @@ type ORResponse struct {
 }
 
 func NewORClient() *ORClient {
-	return &ORClient{ApiKey: os.Getenv("OPENROUTER_API_KEY")}
+	return &ORClient{ApiKey: os.Getenv("GEMINI_API_KEY")}
 }
 
-func (c *ORClient) ExplainPricing(prompt string) (string, error) {
+func (c *ORClient) ExplainPricing(prompt string) (string, string, error) {
 	reqBody := ORRequest{
 		Model:     "mistral-7b-instruct",
 		Input:     prompt,
 		MaxTokens: 200,
 	}
+
 	body, _ := json.Marshal(reqBody)
 
 	req, _ := http.NewRequest(
@@ -45,11 +48,41 @@ func (c *ORClient) ExplainPricing(prompt string) (string, error) {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 	defer resp.Body.Close()
 
 	var result ORResponse
-	json.NewDecoder(resp.Body).Decode(&result)
-	return result.Output, nil
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		return "", "", err
+	}
+
+	output := result.Output
+
+	riskExplanation := extractBetween(
+		output,
+		"<<RISK_EXPLANATION>>",
+		"<</RISK_EXPLANATION>>",
+	)
+
+	confidenceNote := extractBetween(
+		output,
+		"<<CONFIDENCE_NOTE>>",
+		"<</CONFIDENCE_NOTE>>",
+	)
+
+	if riskExplanation == "" || confidenceNote == "" {
+		return "", "", fmt.Errorf("invalid LLM response format")
+	}
+
+	return riskExplanation, confidenceNote, nil
+}
+
+func extractBetween(text, start, end string) string {
+	s := strings.Index(text, start)
+	e := strings.Index(text, end)
+	if s == -1 || e == -1 || e <= s {
+		return ""
+	}
+	return strings.TrimSpace(text[s+len(start) : e])
 }

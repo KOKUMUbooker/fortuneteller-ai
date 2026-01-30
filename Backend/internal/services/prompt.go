@@ -30,6 +30,7 @@ IMPORTANT RULES:
 - Do NOT suggest alternative prices.
 - ONLY explain the provided recommendation.
 - Use simple, non-technical language.
+- Do NOT add extra sections or commentary.
 
 Pricing Context:
 - Unit cost: %.2f
@@ -39,14 +40,17 @@ Pricing Context:
 - Risk factors: %s
 
 Your task:
-Return EXACTLY two short sections.
+Return EXACTLY two sections using the delimiters below.
 
 FORMAT (must follow exactly):
-Risk Explanation:
-<one short paragraph explaining the risk>
 
-Confidence Note:
-<one short sentence about confidence or uncertainty>
+<<RISK_EXPLANATION>>
+One short paragraph explaining the risk.
+<</RISK_EXPLANATION>>
+
+<<CONFIDENCE_NOTE>>
+One short sentence expressing confidence or uncertainty.
+<</CONFIDENCE_NOTE>>
 `,
 		input.UnitCost,
 		input.RecommendedPrice,

@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func PriceRecommendingHandler(c *gin.Context) {
+func PingHandler(c *gin.Context) {
 	// Return JSON response
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Endpoint for price recommending handler",
+		"message": "pong",
 	})
 }
