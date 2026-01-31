@@ -9,6 +9,7 @@ import { Slider } from "@/components/ui/slider"
 import { useMutation } from "@tanstack/react-query"
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { PricingResult } from "./result-card"
+import { toast, Toaster } from "sonner"
 
 export interface PricingInputs {
   unitCost: number
@@ -61,9 +62,16 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
     //   queryClient.invalidateQueries({ queryKey: [POSTS_CACHE_KEY] });
     // },
   });
+
   useEffect(()=>{
     setIsPending(isPending)
   },[isPending])
+
+  useEffect(()=>{
+    if(error) {
+      toast.error(error.message)
+    }
+  },[error])
 
   useEffect(()=>{
     if (data) {
@@ -90,6 +98,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
 
   return (
     <Card>
+      <Toaster />
       <CardHeader>
         <CardTitle>Pricing Input</CardTitle>
         <CardDescription>
