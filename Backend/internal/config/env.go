@@ -12,7 +12,7 @@ type Config struct {
 
 func Load() *Config {
 	// Load .env if present (safe in prod too)
-	_ = godotenv.Load("../../.env")
+	_ = godotenv.Load()
 
 	cfg := &Config{
 		GeminiKey: getEnv("OPENROUTER_API_KEY", ""),
