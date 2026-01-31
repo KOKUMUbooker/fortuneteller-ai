@@ -46,7 +46,7 @@ func main() {
 	}))
 
 	// Rate limiting
-	// r.Use(middleware.RateLimiter())
+	r.Use(middleware.RateLimiter())
 
 	// Routes
 	r.GET("/ping", handlers.PingHandler)
