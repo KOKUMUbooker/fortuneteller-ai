@@ -115,7 +115,8 @@ OPENROUTER_API_KEY=<your-api-key>
 
 ```bash
 go mod tidy
-go run cmd/server/main.go
+cd cmd/server
+go run .
 ```
 
 The backend will start a REST API server (default port 8080).
