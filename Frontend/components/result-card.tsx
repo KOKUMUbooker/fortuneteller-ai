@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RiskBadge } from "@/components/risk-badge"
+import { toTwoDecimalPlaces } from "@/lib/utils";
 
 export interface PricingResult {
   recommendedPrice: number
@@ -32,11 +33,11 @@ export function ResultCard({ result }: ResultCardProps) {
       <CardContent className="space-y-4">
         <div className="text-center">
           <p className="text-5xl font-bold text-primary">
-            KES{result.recommendedPrice.toFixed(2)}
+            KES {toTwoDecimalPlaces(result.recommendedPrice).toLocaleString()}
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            Suggested range: KES{result.suggestedRange.min.toFixed(2)} - $
-            {result.suggestedRange.max.toFixed(2)}
+            Suggested range: KES {toTwoDecimalPlaces(result.suggestedRange.min)?.toLocaleString()} - KES{" "}
+            {toTwoDecimalPlaces(result.suggestedRange.max).toLocaleString()}
           </p>
         </div>
       </CardContent>

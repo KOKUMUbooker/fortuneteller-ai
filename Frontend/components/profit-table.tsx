@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn, toTwoDecimalPlaces } from "@/lib/utils"
 
 interface ProfitScenario {
   price: number
@@ -51,12 +51,12 @@ export function ProfitTable({ scenarios, recommendedPrice }: ProfitTableProps) {
                   )}
                 >
                   <TableCell className="font-medium">
-                    KES{scenario.price.toFixed(2)}
+                    KES {toTwoDecimalPlaces(scenario.price).toLocaleString()}
                     {scenario.price === recommendedPrice && (
                       <span className="ml-2 text-xs text-primary">Recommended</span>
                     )}
                   </TableCell>
-                  <TableCell>KES{scenario.profitPerUnit.toFixed(2)}</TableCell>
+                  <TableCell>KES {toTwoDecimalPlaces(scenario.profitPerUnit).toLocaleString()}</TableCell>
                   <TableCell>{scenario.marginPercent.toFixed(1)}%</TableCell>
                   <TableCell>
                     <span

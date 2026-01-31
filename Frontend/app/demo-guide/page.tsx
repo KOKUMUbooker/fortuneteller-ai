@@ -3,6 +3,7 @@ import { FooterDisclaimer } from "@/components/footer-disclaimer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, TrendingUp, TrendingDown, Minus } from "lucide-react"
+import { toTwoDecimalPlaces } from "@/lib/utils"
 
 const scenarios = [
   {
@@ -131,7 +132,7 @@ export default function DemoGuidePage() {
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Unit Cost:</dt>
                           <dd className="font-medium text-foreground">
-                            KES{scenario.inputs.unitCost.toFixed(2)}
+                            KES {toTwoDecimalPlaces(scenario.inputs.unitCost).toLocaleString()}
                           </dd>
                         </div>
                         <div className="flex justify-between">
@@ -143,13 +144,13 @@ export default function DemoGuidePage() {
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Competitor Min:</dt>
                           <dd className="font-medium text-foreground">
-                            KES{scenario.inputs.competitorMin.toFixed(2)}
+                            KES {toTwoDecimalPlaces(scenario.inputs.competitorMin).toLocaleString()}
                           </dd>
                         </div>
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Competitor Max:</dt>
                           <dd className="font-medium text-foreground">
-                            KES{scenario.inputs.competitorMax.toFixed(2)}
+                            KES {toTwoDecimalPlaces(scenario.inputs.competitorMax).toFixed()}
                           </dd>
                         </div>
                       </dl>
