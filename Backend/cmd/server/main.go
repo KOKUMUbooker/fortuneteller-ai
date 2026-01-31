@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"time"
 
 	"github.com/KOKUMUbooker/fortuneteller-ai/Backend/internal/config"
 	"github.com/KOKUMUbooker/fortuneteller-ai/Backend/internal/handlers"
@@ -25,12 +24,9 @@ func main() {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
 			"http://localhost:3000",
-			"https://fteller.netlify.app/",
+			"https://fteller.netlify.app",
 		},
-		AllowMethods:     []string{"GET", "POST", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
 	}))
 
 	// Rate limiting
