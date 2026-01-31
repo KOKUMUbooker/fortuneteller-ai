@@ -15,7 +15,7 @@ func Load() *Config {
 	_ = godotenv.Load("../../.env")
 
 	cfg := &Config{
-		GeminiKey: getEnv("GEMINI_API_KEY", ""),
+		GeminiKey: getEnv("OPENROUTER_API_KEY", ""),
 	}
 
 	validate(cfg)
