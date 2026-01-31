@@ -131,7 +131,7 @@ export default function DemoGuidePage() {
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Unit Cost:</dt>
                           <dd className="font-medium text-foreground">
-                            ${scenario.inputs.unitCost.toFixed(2)}
+                            KES{scenario.inputs.unitCost.toFixed(2)}
                           </dd>
                         </div>
                         <div className="flex justify-between">
@@ -143,13 +143,13 @@ export default function DemoGuidePage() {
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Competitor Min:</dt>
                           <dd className="font-medium text-foreground">
-                            ${scenario.inputs.competitorMin.toFixed(2)}
+                            KES{scenario.inputs.competitorMin.toFixed(2)}
                           </dd>
                         </div>
                         <div className="flex justify-between">
                           <dt className="text-muted-foreground">Competitor Max:</dt>
                           <dd className="font-medium text-foreground">
-                            ${scenario.inputs.competitorMax.toFixed(2)}
+                            KES{scenario.inputs.competitorMax.toFixed(2)}
                           </dd>
                         </div>
                       </dl>

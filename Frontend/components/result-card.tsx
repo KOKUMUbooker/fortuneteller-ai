@@ -32,10 +32,10 @@ export function ResultCard({ result }: ResultCardProps) {
       <CardContent className="space-y-4">
         <div className="text-center">
           <p className="text-5xl font-bold text-primary">
-            ${result.recommendedPrice.toFixed(2)}
+            KES{result.recommendedPrice.toFixed(2)}
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            Suggested range: ${result.suggestedRange.min.toFixed(2)} - $
+            Suggested range: KES{result.suggestedRange.min.toFixed(2)} - $
             {result.suggestedRange.max.toFixed(2)}
           </p>
         </div>

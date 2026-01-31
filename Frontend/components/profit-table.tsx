@@ -51,12 +51,12 @@ export function ProfitTable({ scenarios, recommendedPrice }: ProfitTableProps) {
                   )}
                 >
                   <TableCell className="font-medium">
-                    ${scenario.price.toFixed(2)}
+                    KES{scenario.price.toFixed(2)}
                     {scenario.price === recommendedPrice && (
                       <span className="ml-2 text-xs text-primary">Recommended</span>
                     )}
                   </TableCell>
-                  <TableCell>${scenario.profitPerUnit.toFixed(2)}</TableCell>
+                  <TableCell>KES{scenario.profitPerUnit.toFixed(2)}</TableCell>
                   <TableCell>{scenario.marginPercent.toFixed(1)}%</TableCell>
                   <TableCell>
                     <span

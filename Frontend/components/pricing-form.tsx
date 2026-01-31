@@ -102,7 +102,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
             <Label htmlFor="unitCost">Unit Cost</Label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                $
+                KES
               </span>
               <Input
                 id="unitCost"
@@ -141,7 +141,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
               <Label htmlFor="competitorMinPrice">Competitor Min Price</Label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                  $
+                  KES
                 </span>
                 <Input
                   id="competitorMinPrice"
@@ -163,7 +163,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
               <Label htmlFor="competitorMaxPrice">Competitor Max Price</Label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                  $
+                  KES
                 </span>
                 <Input
                   id="competitorMaxPrice"
