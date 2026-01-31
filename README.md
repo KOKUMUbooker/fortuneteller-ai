@@ -7,18 +7,26 @@ This project was built as part of a **48-hour AI Agents Hackathon** and follows 
 
 ---
 
+## Demo
+<img src="readme-assets/fortuneAI.png">
+
 ## Table of Contents
 
-1. [Project Structure](#project-structure)
-2. [Frontend](#frontend)
-3. [Backend](#backend)
-4. [Setup Instructions](#setup-instructions)
-5. [Environment Variables](#environment-variables)
-6. [Usage](#usage)
-7. [Architecture](#architecture)
-8. [SDG Alignment](#sdg-alignment)
-9. [Limitations](#limitations)
-10. [License](#license)
+- [FortuneTeller AI](#fortuneteller-ai)
+  - [Demo](#demo)
+  - [Table of Contents](#table-of-contents)
+  - [Project Structure](#project-structure)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Setup Instructions](#setup-instructions)
+    - [1. Backend](#1-backend)
+    - [2. Frontend](#2-frontend)
+  - [Environment Variables](#environment-variables)
+  - [Usage](#usage)
+  - [Architecture](#architecture)
+  - [SDG Alignment](#sdg-alignment)
+  - [Limitations](#limitations)
+  - [License](#license)
 
 ---
 
