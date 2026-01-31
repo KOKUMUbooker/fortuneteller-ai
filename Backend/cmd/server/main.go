@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"os"
 	"time"
 
 	"github.com/KOKUMUbooker/fortuneteller-ai/Backend/internal/config"
@@ -12,8 +12,12 @@ import (
 )
 
 func main() {
-	cfg := config.Load()
-	fmt.Println("cfg : ", cfg)
+	config.Load()
+	// fmt.Println("cfg : ", cfg)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // local default
+	}
 
 	r := gin.Default()
 
@@ -39,5 +43,5 @@ func main() {
 	// Start cleanup worker
 	go middleware.CleanupClients()
 
-	r.Run() // :8080
+	r.Run(":" + port)
 }
