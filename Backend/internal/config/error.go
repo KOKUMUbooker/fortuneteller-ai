@@ -4,6 +4,6 @@ import "log"
 
 func validate(cfg *Config) {
 	if cfg.GeminiKey == "" {
-		log.Fatal("At least one AI provider key must be set")
+		log.Fatal("No .env file found in root of Backend directory")
 	}
 }
