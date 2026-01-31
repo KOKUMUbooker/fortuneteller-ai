@@ -101,7 +101,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
           <div className="space-y-2">
             <Label htmlFor="unitCost">Unit Cost</Label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
                 KES
               </span>
               <Input
@@ -111,7 +111,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
                 placeholder="0.00"
                 value={unitCost}
                 onChange={(e) => setUnitCost(e.target.value)}
-                className="pl-7"
+                className="pl-10"
               />
             </div>
             <p className="text-xs text-muted-foreground">Cost to produce one item</p>
@@ -140,7 +140,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
             <div className="space-y-2">
               <Label htmlFor="competitorMinPrice">Competitor Min Price</Label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                <span className="absolute left-3 top-1/2 text-sm -translate-y-1/2 text-muted-foreground">
                   KES
                 </span>
                 <Input
@@ -150,7 +150,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
                   placeholder="0.00"
                   value={competitorMinPrice}
                   onChange={(e) => setCompetitorMinPrice(e.target.value)}
-                  className="pl-7"
+                  className="pl-10"
                 />
               </div>
               <p className="text-xs text-muted-foreground">Lowest competitor price</p>
@@ -162,7 +162,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
             <div className="space-y-2">
               <Label htmlFor="competitorMaxPrice">Competitor Max Price</Label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                <span className="absolute left-3 top-1/2 text-sm -translate-y-1/2 text-muted-foreground">
                   KES
                 </span>
                 <Input
@@ -172,7 +172,7 @@ export function PricingForm({  isLoading ,setIsPending,setResult}: PricingFormPr
                   placeholder="0.00"
                   value={competitorMaxPrice}
                   onChange={(e) => setCompetitorMaxPrice(e.target.value)}
-                  className="pl-7"
+                  className="pl-10"
                 />
               </div>
               <p className="text-xs text-muted-foreground">Highest competitor price</p>
